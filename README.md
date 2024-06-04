@@ -16,6 +16,27 @@ For my visualization, I collected the data myself.
 # Data and file overview
 
 ```
+ENVS193DS-Data.Visualization
+│   │   │   ├── CYOP-DataVisualization.html
+│   │   │   ├── CYOP-DataVisualization.qmd
+│   │   │   ├── CYOP-DataVisualization_files
+│   │   │   │   └── libs
+│   │   │   │       ├── bootstrap
+│   │   │   │       │   ├── bootstrap-icons.css
+│   │   │   │       │   ├── bootstrap-icons.woff
+│   │   │   │       │   ├── bootstrap.min.css
+│   │   │   │       │   └── bootstrap.min.js
+│   │   │   │       ├── clipboard
+│   │   │   │       │   └── clipboard.min.js
+│   │   │   │       └── quarto-html
+│   │   │   │           ├── anchor.min.js
+│   │   │   │           ├── popper.min.js
+│   │   │   │           ├── quarto-syntax-highlighting.css
+│   │   │   │           ├── quarto.js
+│   │   │   │           ├── tippy.css
+│   │   │   │           └── tippy.umd.min.js
+│   │   │   ├── ENVS193DS-Data.Visualization.Rproj
+│   │   │   └── README.md
 
 ```
 
