@@ -1,0 +1,47 @@
+---
+title: "Data Visualization"
+author: "Maya Bernstein"
+date: "June 5, 2024"
+format: html
+editor: visual
+---
+
+# **Choose your own assignment - Advanced data visualization**
+
+## Selected Visualizations
+
+#### The Great American Coffee Taste Test
+
+![](https://lh7-us.googleusercontent.com/docsz/AD_4nXdgQ644JBTnHGGDDRqYlAblTPPZMiez_11T3Gact44vUAiTIg7lQtW4VFI_yRoi3z2W-SOtPr-Re5dNzQiFYOfsxhKMs44zmtSml8Do84ZhPGQbflEZk0iJfWsO9SoehVcz-rGtrOhG7ANP2_iFW586HPw?key=i80mqUfeJu47Mbptdo-dDg)
+
+The first visualization I like is by the creator Nicola Rennie in her TidyTuesday repository. The title is “The Great American Coffee Taste Test,” and it shows which coffees were preferred by people who participated in the survey. It is essentially a bar graph that shows the percent of people who preferred each type of coffee, but the “bar” is a coffee cup that is proportionally full to what percentage of people liked it.
+
+Packages used:
+
+Tidyverse - used to create the base of visualizations
+
+Showtext - adds more fonts 
+
+Patchwork - combines multiple ggplots into one plot
+
+Camcorder - records the making of the visualization so she can make a gif out of it
+
+Ggtext - allows for rich text formatting 
+
+nrBrand - allows for branding (more consistent themes)
+
+Glue - used to create the coffee icon in the color that she wants and create a template phrase with data placeholders
+
+She did some data wrangling which included creating the coffee cup icon and processing the survey data to count the number of times certain coffees were preferred and then calculating a percent from that. The geoms used were geom_textbox, which adds text boxes to ggplots for the caption and geom_rect to create a bar-like visualization within the coffee cups. The data itself includes information about each particilants coffee drinking preferences in general, like what their favorite drink is and where they usually get their coffee from, and then which of the four coffee types were their favorite. [You can find her code here.](https://github.com/nrennie/tidytuesday/blob/main/2024/2024-05-14/20240514.R)
+
+#### Trail Running
+
+![](https://lh7-us.googleusercontent.com/docsz/AD_4nXc_fhmI2baivTRpoJ4zng-a4tPCZXa38r8wnf1xl4F4NCbT7gxEd0YvHy07a3hCQzmHb_jDaaBekoZwWRUcG0XeNKNiFZU0ytPcDDz058qi1n-7gDLxWyOcbbo6gXKqcyIBkyPnrfyDNRV03YQqjEwMrlQH?key=i80mqUfeJu47Mbptdo-dDg)
+
+The second visualization I like is by Georgios Karamanis in their TidyTuesday repository. This visualization displays the difference in median trail running pace between men and women by nationality. The packaged used are tidyverse, camcorder, patchwork, and colorspace, which the first three being used in the same way as they were for the first visualization. The colorspace package is used to manipulate colors more easily such as changing saturation and mix colors. To clean the data, they did a series of pipes to filter for the data they need and calculate the median pace by nationality and gender. The final dataframe has the name of the runner, their age, nationality, time, and gender. The geoms used are geom_segment, which creates the lines for the difference in mean pace, geom_point, which is added to the end of each segment to create the “lollipop” shape, geom_text to add captions and labels, and geom_rect, to create the bar-like chart on the right. [Here is a link to their code](https://github.com/gkaramanis/tidytuesday/tree/master/2021/2021-week43). 
+
+#### What Makes a Five-Star Trail?
+
+![](https://lh7-us.googleusercontent.com/docsz/AD_4nXeEsxjyT-Xj0YpPqt64fX5n0sL_WSMJiiTHtjjZbHfxB4wW4loEkPhBDtHvHAENDqvKyNU27INAbid5_xxjH4thrIg3QZixUX_vxIXbfi2sk6GFKoA6KvtRrbXzH8NBULkcTvI3jQYkmmKipeOEes_-Q_P4?key=i80mqUfeJu47Mbptdo-dDg)
+
+The third visualization I like is from Ijeamaka Anyene’s TidyTuesday repository which uses survey data to highlight which trail features appear more frequently on five-star trails. The packages used to make this visualization are ggplot2, stringr, dplyr, tidyr, ggtext, and ggimage. These R packages collectively enable advanced data manipulation (dplyr, tidyr), string operations (stringr), and creation of sophisticated and richly formatted visualizations (ggplot2, ggtext, ggimage). To clean the data, she filtered for only 5 star ratings, then split those up into which features were present, and then counted which features occurred most often. The final dataset has the names of the five-star rated trails and the features each of those trails have. The geoms used in this visualization are geom_text to more easily add captions and labels and geom_segment in a circular shape to create the percentage visualization for each feature. [Here is a link to their code](https://github.com/Ijeamakaanyene/tidytuesday/blob/master/scripts/2020_18_washington_trails.RMd). 
