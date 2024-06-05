@@ -1,14 +1,13 @@
 ---
 title: "Advanced Data Visualization"
 author: "Maya Bernstein"
-date: "June 5, 2024"
-format: html
-html: 
+date: "June 5 2024"
+format:
+  html: 
     toc: true # includes a table of contents in rendered html format
-    toc-depth: 3 # specify the depth of the table of contents
 execute: # for all code chunks
-    warning: FALSE # do not display warnings
-    message: FALSE # do not display messages
+    warning: false # do not display warnings
+    message: false # do not display messages
 ---
 
 # **Choose your own assignment - Advanced data visualization**
