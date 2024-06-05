@@ -54,4 +54,4 @@ ENVS193DS-Data.Visualization
 
 # Rendered output
 
-The rendered .html for my repo is [here](https://htmlpreview.github.io/https://github.com/mayakbernstein/ENVS193DS-Data.Visualization/blob/main/CYOP-DataVisualization.html).
+The rendered .html for my repo is [here](https://htmlpreview.github.io/?https://github.com/mayakbernstein/ENVS193DS-Data.Visualization/blob/main/CYOP-DataVisualization.html).
