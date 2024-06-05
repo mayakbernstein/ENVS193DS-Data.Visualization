@@ -91,7 +91,8 @@ ggplot(breakouts, #data
   scale_x_continuous() +
   coord_polar(start = 0) + #m make the segments into a circle 
   scale_color_identity() +  # Use colors as they are specified
-  expand_limits(x = c(0, 30), y = c(0, max(breakouts$pimples) + 2)) +  # Ensure enough space around the plot
+  expand_limits(x = c(0, 30), y = c(0, max(breakouts$pimples) + 2)) +  # Ensure 
+  #enough space around the plot
   theme_minimal() +
   theme(
     #although not using the titles, need to have the code so the margins are big enough
@@ -158,7 +159,11 @@ ggplot(breakouts, #data
     aes(x = 25, #changes vertically
         y = 24), #changes horizontally
   # label is the title of the figure, using this format for more customization
-    label = "<b style='color:#d82349;font-size: 40pt;'>Breakouts</b><br> <span style='font-size: 12pt; color:#d82349 '>throughout my</span><br><span style='font-size: 40pt; color:#d82349'>Cycle</span>",
+    label = 
+    "<b style='color:#d82349;font-size: 40pt;'>Breakouts</b><br>
+  <span style='font-size: 12pt; color:#d82349 
+  '>throughout my</span><br><span style='font-size: 40pt; 
+  color:#d82349'>Cycle</span>",
 
     hjust = 0.5, #center horizontally
     vjust = 0.5, #center vertically

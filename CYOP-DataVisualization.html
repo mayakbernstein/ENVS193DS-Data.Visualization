@@ -129,8 +129,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="trail-running">Trail Running</h4>
 <p><img src="images/clipboard-1647356209.png" class="img-fluid">The second visualization I like is by Georgios Karamanis in their TidyTuesday repository. This visualization displays the difference in median trail running pace between men and women by nationality. The packaged used are tidyverse, camcorder, patchwork, and colorspace, which the first three being used in the same way as they were for the first visualization. The colorspace package is used to manipulate colors more easily such as changing saturation and mix colors. To clean the data, they did a series of pipes to filter for the data they need and calculate the median pace by nationality and gender. The final dataframe has the name of the runner, their age, nationality, time, and gender. The geoms used are geom_segment, which creates the lines for the difference in mean pace, geom_point, which is added to the end of each segment to create the “lollipop” shape, geom_text to add captions and labels, and geom_rect, to create the bar-like chart on the right. <a href="https://github.com/gkaramanis/tidytuesday/tree/master/2021/2021-week43">Here is a link to their code</a>.&nbsp;</p>
 </section>
-<section id="what-makes-a-five-star-trail" class="level4">
-<h4 class="anchored" data-anchor-id="what-makes-a-five-star-trail">What Makes a Five-Star Trail?</h4>
+<section id="washington-trails" class="level4">
+<h4 class="anchored" data-anchor-id="washington-trails">Washington Trails</h4>
 <p><img src="images/clipboard-1699225476.png" class="img-fluid">The third visualization I like is from Ijeamaka Anyene’s TidyTuesday repository which uses survey data to highlight which trail features appear more frequently on five-star trails. The packages used to make this visualization are ggplot2, stringr, dplyr, tidyr, ggtext, and ggimage. These R packages collectively enable advanced data manipulation (dplyr, tidyr), string operations (stringr), and creation of sophisticated and richly formatted visualizations (ggplot2, ggtext, ggimage). To clean the data, she filtered for only 5 star ratings, then split those up into which features were present, and then counted which features occurred most often. The final dataset has the names of the five-star rated trails and the features each of those trails have. The geoms used in this visualization are geom_text to more easily add captions and labels and geom_segment in a circular shape to create the percentage visualization for each feature. <a href="https://github.com/Ijeamakaanyene/tidytuesday/blob/master/scripts/2020_18_washington_trails.RMd">Here is a link to their code</a>.&nbsp;</p>
 </section>
 </section>
@@ -180,81 +180,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>() <span class="sc">+</span></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">start =</span> <span class="dv">0</span>) <span class="sc">+</span> <span class="co">#m make the segments into a circle </span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_identity</span>() <span class="sc">+</span>  <span class="co"># Use colors as they are specified</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples) <span class="sc">+</span> <span class="dv">2</span>)) <span class="sc">+</span>  <span class="co"># Ensure enough space around the plot</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(), <span class="co"># no x axis title</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), <span class="co"># no y axis title </span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="co"># gets rid of y axis gridlines</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), <span class="co"># gets rid of x axis gridlines</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),  <span class="co"># Remove x-axis numbers</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),  <span class="co"># Remove y-axis numbers</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"#ffefd5"</span>, <span class="co"># add fill color </span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">"#ffefd5"</span>), <span class="co">#border color is the same</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"#ffefd5"</span>,<span class="co">#background color of entire plot</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="cn">NA</span>), <span class="co">#no border color </span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_blank</span>(), <span class="co"># Remove panel border</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="st">"cm"</span>) <span class="co"># make margins bigger</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="co">#text type label (same for all annotates below)</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">3</span>, <span class="co">#placement </span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples) <span class="sc">+</span> <span class="dv">1</span>, <span class="co">#placement above data</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Period"</span>, <span class="co">#title</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#f7bfbe"</span>, <span class="co">#color</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">5</span>, <span class="co">#size</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">0</span>, <span class="co">#horizontal</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">1</span>, <span class="co">#placement</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="sc">+</span> <span class="co">#font</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">10</span>, </span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples) <span class="sc">+</span> <span class="dv">1</span>, </span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Follicular"</span>, </span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#83c53f"</span>, </span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">5</span>, </span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="sc">+</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">12</span>, </span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples), </span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Ovulation"</span>, </span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#f8bb6c"</span>, </span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">5</span>, </span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">0</span>,</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="sc">+</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">20</span>, </span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples) <span class="sc">-</span> <span class="dv">8</span>, </span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Luteal"</span>, </span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#2596be"</span>, </span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">5</span>, </span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">0</span>, </span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">1</span>,</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="sc">+</span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_richtext</span>( <span class="co">#adding cooler label</span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">25</span>, <span class="co">#changes vertically</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="dv">24</span>), <span class="co">#changes horizontally</span></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>  <span class="co"># label is the title of the figure, using this format for more customization</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"&lt;b style='color:#d82349;font-size: 40pt;'&gt;Breakouts&lt;/b&gt;&lt;br&gt; &lt;span style='font-size: 12pt; color:#d82349 '&gt;throughout my&lt;/span&gt;&lt;br&gt;&lt;span style='font-size: 40pt; color:#d82349'&gt;Cycle&lt;/span&gt;"</span>,</span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="co">#center horizontally</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="co">#center vertically</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">alpha</span>(<span class="st">"#ffefd5"</span>, <span class="dv">0</span>),  <span class="co"># Transparent fill</span></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.color =</span> <span class="cn">NA</span>, <span class="co"># Remove border around the text box</span></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">"Lilita"</span>, <span class="co">#font</span></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">8</span> <span class="co">#font size </span></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples) <span class="sc">+</span> <span class="dv">2</span>)) <span class="sc">+</span>  <span class="co"># Ensure </span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="co">#enough space around the plot</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="co">#although not using the titles, need to have the code so the margins are big enough</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="co">#to add the title to where I want below</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(), <span class="co"># no x axis title</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), <span class="co"># no y axis title </span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="co"># gets rid of y axis gridlines</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), <span class="co"># gets rid of x axis gridlines</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),  <span class="co"># Remove x-axis numbers</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),  <span class="co"># Remove y-axis numbers</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"#ffefd5"</span>, <span class="co"># add fill color </span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">"#ffefd5"</span>), <span class="co">#border color is the same</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"#ffefd5"</span>,<span class="co">#background color of entire plot</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="cn">NA</span>), <span class="co">#no </span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_blank</span>(), <span class="co"># Remove panel border</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="st">"cm"</span>) <span class="co"># Add margins around the plot</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="co">#keepign labs to preserve spacing even though not used to display text</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">""</span>, </span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">""</span>, </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="co">#add cycle labels </span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="co">#text type of annotation</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">3</span>, <span class="co">#x coordinate for placement </span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples) <span class="sc">+</span> <span class="dv">1</span>, <span class="co">#placed above data</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Period"</span>, <span class="co">#title</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#f7bfbe"</span>, <span class="co">#color</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">5</span>, <span class="co">#font size</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">0</span>, <span class="co">#horizontal</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">1</span>, <span class="co">#right text alignment</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="sc">+</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">9</span>, </span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples), </span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Follicular"</span>, </span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#83c53f"</span>, </span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">5</span>, </span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="co">#left text alignmnet </span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="sc">+</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">12</span>, </span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples)<span class="sc">-</span><span class="dv">4</span>, </span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Ovulation"</span>, </span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#f8bb6c"</span>, </span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">5</span>, </span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">0</span>,</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="sc">+</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">20</span>, </span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">max</span>(breakouts<span class="sc">$</span>pimples) <span class="sc">-</span> <span class="dv">8</span>, </span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Luteal"</span>, </span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#2596be"</span>, </span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">5</span>, </span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>           <span class="at">angle =</span> <span class="dv">0</span>, </span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">1</span>,</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="sc">+</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_richtext</span>(</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">25</span>, <span class="co">#changes vertically</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="dv">24</span>), <span class="co">#changes horizontally</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>  <span class="co"># label is the title of the figure, using this format for more customization</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> </span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    <span class="st">"&lt;b style='color:#d82349;font-size: 40pt;'&gt;Breakouts&lt;/b&gt;&lt;br&gt;</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;span style='font-size: 12pt; color:#d82349 </span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="st">  '&gt;throughout my&lt;/span&gt;&lt;br&gt;&lt;span style='font-size: 40pt; </span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="st">  color:#d82349'&gt;Cycle&lt;/span&gt;"</span>,</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="co">#center horizontally</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="co">#center vertically</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">alpha</span>(<span class="st">"#ffefd5"</span>, <span class="dv">0</span>),  <span class="co"># Transparent fill</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.color =</span> <span class="cn">NA</span>, <span class="co"># Remove border around the text box</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">"Lilita"</span>) <span class="co">#font </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="CYOP-DataVisualization_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p><br>
+</p>
 </section>
 <section id="process" class="level2">
 <h2 class="anchored" data-anchor-id="process">Process</h2>
-<p>My visualization displays the number of breakouts throughout one of my menstrual cycles. Each spoke is one day of my cycle; the radius corresponds to the number of breakouts on that day. To start my coding process, I had to clean my data slightly, by confining it to only once cycle (which for me, was 30 days). I then assigned each part of my cycle a different color before starting my plot.</p>
+<p>My visualization displays the number of breakouts throughout one of my menstrual cycles. Each spoke is one day of my cycle; the radius corresponds to the number of breakouts on that day. To start my coding process, I had to clean my data slightly, by confining it to only once cycle (which for me, was 30 days). I then assigned each part of my cycle a different color before starting the visualization. To plot, I used ggplot and used the geoms geom_segment and geom_point. I borrowed this idea from the trail running plot which used that combo to get the “lollipop” - like data. I then took inspiration from the Washington Trails plot to make my data display in a circular shape, using the coord_polar call. I spent a lot of time customizing the theme, changing the color of the background, figuring out how to import custom fonts, and adjusting the margins of the figure. I used annotate to add the description labels to each part of my cycle, and geom_richtext to add the title of my figure. Overall, my figures shows that throughout my menstrual cycle, I tend to have less breakouts in the second half.</p>
 </section>
 </section>
 
